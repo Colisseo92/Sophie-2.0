@@ -58,7 +58,7 @@ void update_delta_light(){
   delta_light6 = last_light6 - light6;
 }
 
-void ecrire_memoire(int id,int data){
+void write_on_memory(int id,int data){
   EEPROM.put(id,data);
 }
 
@@ -75,17 +75,14 @@ void setup(void) {
   byte digitPins[] = {13, 12, 11, 10};
   byte segmentPins[] = {9, 2, 3, 5, 6, 8, 7, 4};
 
-  if(get_from_memory(id_ecriture) == -1){
-    total = 0;
-  }else{
-    total = get_from_memory(id_ecriture);
-  }
-  ecrire_memoire(10,0);
   bool resistorsOnSegments = true; 
   bool updateWithDelaysIn = true;
   byte hardwareConfig = COMMON_CATHODE; 
+  
   sevseg.begin(hardwareConfig, numDigits, digitPins, segmentPins, resistorsOnSegments);
   sevseg.setBrightness(100);
+
+  
   Serial.begin(9600);
 }
 
