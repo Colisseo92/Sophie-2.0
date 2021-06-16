@@ -75,11 +75,11 @@ void setup(void) {
   byte digitPins[] = {13, 12, 11, 10};
   byte segmentPins[] = {9, 2, 3, 5, 6, 8, 7, 4};
 
-  //if(get_from_memory(id_ecriture) == -1){
-  //  total = 0;
-  //}else{
-  //  total = get_from_memory(id_ecriture);
-  //}
+  if(get_from_memory(id_ecriture) == -1){
+    total = 0;
+  }else{
+    total = get_from_memory(id_ecriture);
+  }
   ecrire_memoire(10,0);
   bool resistorsOnSegments = true; 
   bool updateWithDelaysIn = true;
@@ -90,8 +90,6 @@ void setup(void) {
 }
 
 void loop(void) {
-  //Serial.println(delta_light5);
-  //Serial.println(get_from_memory(id_ecriture));
   if(get_money == false){
     get_analog_value();
     update_last_analog_value();
